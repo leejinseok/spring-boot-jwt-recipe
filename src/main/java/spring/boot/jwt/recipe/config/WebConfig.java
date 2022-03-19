@@ -1,4 +1,4 @@
-package spring.boot.jwt.recipe;
+package spring.boot.jwt.recipe.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
