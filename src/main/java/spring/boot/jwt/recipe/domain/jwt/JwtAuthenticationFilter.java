@@ -36,7 +36,7 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
-        Authentication authentication = null;
+        Authentication authentication;
 
         try {
             authentication = getAuthentication(request);
@@ -76,7 +76,7 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
         roles.add(new SimpleGrantedAuthority("ROLE_" + role));
         JwtTokenUser tokenUser = new JwtTokenUser(claims);
 
-        ipValidate(claims, request.getRemoteAddr());
+//        ipValidate(claims, request.getRemoteAddr());
         return new UsernamePasswordAuthenticationToken(tokenUser, null, roles);
     }
 
@@ -86,4 +86,5 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
             throw new JwtTokenIpAddressInvalidException("IP가 일치하지 않습니다.");
         }
     }
+
 }
