@@ -7,17 +7,13 @@ public class Sha256Utils {
 
     private Sha256Utils() {}
 
-    public static String hash(String value, String salt) {
-        byte[] digest = digest(value, salt);
-        return bytesToHex(digest);
-    }
-
     public static String hash(String value) {
         byte[] digest = digest(value, null);
+        assert digest != null;
         return bytesToHex(digest);
     }
 
-    public static byte[] digest(String value, String salt) {
+    private static byte[] digest(String value, String salt) {
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
             messageDigest.update(value.getBytes());

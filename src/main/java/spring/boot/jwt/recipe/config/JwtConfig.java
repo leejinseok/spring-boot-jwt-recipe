@@ -9,7 +9,7 @@ public class JwtConfig {
 
     @Bean
     public JwtTokenProvider jwtTokenProvider() {
-        return new JwtTokenProvider("jwtSecretKey");
+        return new JwtTokenProvider("jwtRecipeSampleProjectSecretKey!@");
     }
 
 }
