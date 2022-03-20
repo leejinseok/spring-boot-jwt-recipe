@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.security.SignatureException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashSet;
@@ -40,7 +41,7 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
 
         try {
             authentication = getAuthentication(request);
-        } catch (ExpiredJwtException | MalformedJwtException e) {
+        } catch (SignatureException | ExpiredJwtException | MalformedJwtException e) {
             sendError(response);
             return;
         }

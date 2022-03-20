@@ -2,6 +2,7 @@ package spring.boot.jwt.recipe.domain.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
+import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -35,17 +36,17 @@ public class JwtTokenProvider {
             .compact();
     }
 
-    private Date expireTime() {
+        private Date expireTime() {
         Date expireTime = new Date();
         expireTime.setTime(expireTime.getTime() + PLUS_MILLS);
         return expireTime;
     }
 
     public Claims getClaims(String token) {
-        return Jwts.parser()
+        JwtParser parser = Jwts.parserBuilder()
             .setSigningKey(key)
-            .parseClaimsJws(token)
-            .getBody();
+            .build();
+        return parser.parseClaimsJws(token).getBody();
     }
 
 }
