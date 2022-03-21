@@ -1,4 +1,4 @@
-package spring.boot.jwt.recipe.interfaces.auth;
+package spring.boot.jwt.recipe.interfaces;
 
 import javax.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;

@@ -13,9 +13,9 @@ public class JwtTokenUser {
     private String role;
 
     public JwtTokenUser(Claims claims) {
-        this.name = (String) claims.get("name");
-        this.email = (String) claims.get("email");
-        this.role = (String) claims.get("role");
+        this.name = claims.get("name", String.class);
+        this.email = claims.get("email", String.class);
+        this.role = claims.get("role", String.class);
     }
 
 }
